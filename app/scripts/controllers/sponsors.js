@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name sywocClientApp.controller:AboutCtrl
+ * @name sywocClientApp.controller:SponsorsCtrl
  * @description
- * # AboutCtrl
+ * # SponsorsCtrl
  * Controller of the sywocClientApp
  */
 angular.module('sywocClientApp')
-  .controller('AboutCtrl', function () {
+  .controller('SponsorsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
