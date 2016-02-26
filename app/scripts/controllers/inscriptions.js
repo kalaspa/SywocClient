@@ -16,6 +16,6 @@ angular.module('sywocClientApp')
     ];
 
     $scope.boat = {};
-    $scope.boat.crews = [{},{},{},{},{},{},{},{},{},{}];
+    $scope.boat.crew = [{},{},{},{},{},{},{},{},{},{}];
 
 }]);
