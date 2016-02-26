@@ -1,24 +1,26 @@
 <div class="container well">
     <h1>Signing up a boat</h1>
 
-    <form ng-submit="addBoat">
-    <h2>Caracteristics of the boat</h2>
-        <label> Give a name to your boat <input type="text" ng-model="boat.name" placeholder="Name of the boat" required="required"/> {{boat.name}}</label><br/>
-        <label> Tell us your university <input type="text" ng-model="boat.university" placeholder="University" required="required"/> {{boat.university}}</label><br/>
-        <label> Give an email adress <input type="email" ng-model="boat.email" placeholder="Email" required="required"/> {{boat.email}}</label>
+    <form name="signForm" ng-submit="addBoat()">
+        <h2>Caracteristics of the boat</h2>
+            <label> Give a name to your boat <input type="text" ng-model="boat.name" placeholder="Name of the boat" required/> {{boat.name}}</label><br/>
+            <label> Tell us your university <input type="text" ng-model="boat.university" placeholder="University" required/> {{boat.university}}</label><br/>
+            <label> Give an email adress <input type="email" ng-model="boat.email" placeholder="Email" required/> {{boat.email}}</label>
 
-    <h2>Crew</h2>
+        <h2>Crew</h2>
 
-        <label> Number of crewmates, from 5 to 10 <input type="number" ng-model="boat.number" placeholder="Number of crewmates" required="required" min="5" max="10"/> </label>
-        <div ng-repeat="crew in boat.crews">
-            <div ng-if="$index < boat.number">
-                <label>
-                    <input type="text" ng-model="crew.firstname" required="required"/>
-                    <input type="text" ng-model="crew.lastname" required="required"/>
-                    {{crew.lastname}} {{crew.firstname}}
-                </label>
+            <label> Number of crewmates, from 5 to 10 <input type="number" ng-model="boat.number" placeholder="Number of crewmates" required min="5" max="10"/> </label>
+            <div ng-repeat="crew in boat.crews">
+                <div ng-if="$index < boat.number">
+                    <label>
+                        <input type="text" ng-model="crew.firstname" required/>
+                        <input type="text" ng-model="crew.lastname" required/>
+                        {{crew.lastname}} {{crew.firstname}}
+                    </label>
+                </div>
             </div>
-        </div>
+
+            <input type="submit" class="btn btn-primary" ng-class="signForm.$error.required && 'disabled'" value="Check in"/>
     </form>
 
 </div>

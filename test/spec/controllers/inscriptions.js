@@ -1,4 +1,4 @@
-'Inscriptionse strict';
+'Use strict';
 
 describe('Controller: InscriptionsCtrl', function () {
 
@@ -18,6 +18,10 @@ describe('Controller: InscriptionsCtrl', function () {
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(InscriptionsCtrl.awesomeThings.length).toBe(3);
+      expect(InscriptionsCtrl.awesomeThings.length).toBe(3);
+  });
+  it('should countain one empty boat',function(){
+      expect(scope.boat).toBeDefined();
+      expect(scope.boat.crews.length).toEqual(10);
   });
 });
