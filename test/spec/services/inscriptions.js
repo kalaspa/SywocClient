@@ -1,4 +1,6 @@
-describe('inscriptionsAPI' , function() {
+'Use strict';
+
+describe('InscriptionsAPI' , function() {
 
     // load the controller's module
     beforeEach(module('sywocClientApp'));
@@ -9,5 +11,9 @@ describe('inscriptionsAPI' , function() {
         inscriptionsAPI = _inscriptionsAPI_;
         $httpBackend = _$httpBackend_;
     }));
+
+    it('should implement addBoat' , function(){
+        expect(inscriptionsAPI.addBoat()).toEqual(0);
+    });
 
 });

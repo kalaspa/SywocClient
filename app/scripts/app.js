@@ -34,6 +34,11 @@ angular
         controller: 'InscriptionsCtrl',
         controllerAs: 'inscriptions'
       })
+      .when('/login/', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .when('/photos/', {
         templateUrl: 'views/photos.html',
         controller: 'PhotosCtrl',

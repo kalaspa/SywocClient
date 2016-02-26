@@ -2,16 +2,17 @@
 
 /**
  * @ngdoc function
- * @name sywocClientApp.controller:ContactCtrl
+ * @name sywocClientApp.controller:loginCtrl
  * @description
- * # ContactCtrl
+ * # loginCtrl
  * Controller of the sywocClientApp
  */
 angular.module('sywocClientApp')
-  .controller('ContactCtrl', function () {
+  .controller('loginCtrl', ['$scope',function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+
+}]);

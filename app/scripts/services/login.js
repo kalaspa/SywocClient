@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('inscriptionsAPI' , function(){
+    .factory('loginAPI' , function(){
         return {
-            addBoat : addBoat
+            login : login
         };
 
-        function addBoat(boat){
+        function login(boat){
             return 0;
         }
     });
