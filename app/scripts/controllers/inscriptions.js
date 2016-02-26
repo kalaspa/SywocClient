@@ -1,4 +1,4 @@
-'Inscriptionse strict';
+'use strict';
 
 /**
  * @ngdoc function
@@ -8,10 +8,14 @@
  * Controller of the sywocClientApp
  */
 angular.module('sywocClientApp')
-  .controller('InscriptionsCtrl', function () {
+  .controller('InscriptionsCtrl', ['$scope',function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+
+    $scope.boat = {};
+    $scope.boat.crews = [{},{},{},{},{},{},{},{},{},{}];
+
+}]);
