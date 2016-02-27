@@ -1,4 +1,4 @@
-'Use strict';
+'use strict';
 
 describe('InscriptionsAPI' , function() {
 

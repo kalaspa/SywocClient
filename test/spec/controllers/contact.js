@@ -1,4 +1,4 @@
-'Contacte strict';
+'use strict';
 
 describe('Controller: ContactCtrl', function () {
 

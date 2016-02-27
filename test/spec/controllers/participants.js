@@ -1,27 +1,24 @@
 'use strict';
 
-describe('Controller: InscriptionsCtrl', function () {
+describe('Controller: ParticipantsCtrl', function () {
 
   // load the controller's module
   beforeEach(module('sywocClientApp'));
 
-  var InscriptionsCtrl,
+  var ParticipantsCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    InscriptionsCtrl = $controller('InscriptionsCtrl', {
+    ParticipantsCtrl = $controller('ParticipantsCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-      expect(InscriptionsCtrl.awesomeThings.length).toBe(3);
+      expect(ParticipantsCtrl.awesomeThings.length).toBe(3);
   });
-  it('should countain one empty boat',function(){
-      expect(scope.boat).toBeDefined();
-      expect(scope.boat.crew.length).toEqual(10);
-  });
+
 });
