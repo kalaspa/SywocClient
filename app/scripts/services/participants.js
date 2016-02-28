@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('ParticipantsAPI' , function(){
+    .factory('ParticipantsAPI' , ['$resource' , function($resource){
         return {
             getBoat : getBoat
         };
 
         function getBoat(boat){
-            return 0;
+            return $resource('http://localhost:8000/boats/');
         }
-    });
+    }]);

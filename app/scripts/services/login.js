@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('loginAPI' , function(){
+    .factory('LoginAPI' , ['$resource' , function($resource){
         return {
             login : login
         };
 
-        function login(boat){
-            return 0;
+        function login(){
+            return $resource('http://localhost:8000/api-token-auth/');
         }
-    });
+    }]);

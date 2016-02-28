@@ -12,8 +12,8 @@ describe('ParticipantsAPI' , function() {
         $httpBackend = _$httpBackend_;
     }));
 
-    it('should implement addBoat' , function(){
-        expect(ParticipantsAPI.getBoat()).toEqual(0);
+    it('should implement getBoat' , function(){
+        expect(ParticipantsAPI.getBoat).toBeDefined();
     });
 
 });
