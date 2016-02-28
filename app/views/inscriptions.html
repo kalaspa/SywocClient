@@ -1,13 +1,15 @@
 <div class="container well">
     <h1>Signing up a boat</h1>
 
-    <form name="signForm" ng-submit="addBoat()">
-        <h2>Your account</h2>
-            <label> Set login <input type="text" ng-model="login" placeholder="Login" required/></label><br/>
-            <label> Set password <input type="password" ng-model="password1" placeholder="Password" required/></label><br/>
-            <label> Confirm password <input type="password" ng-model="password2" placeholder="Password" required/> <span ng-if="password1 !== password2"> Passwords are different </span></label><br/>
-            <label> Give an email adress <input type="email" ng-model="boat.email" placeholder="Email" required/> {{boat.email}}</label>
+    <p>{{message}}</p>
 
+    <form name="signForm" ng-submit="signUp()">
+        <h2>Your account</h2>
+            <label> Set login <input type="text" ng-model="registration.username" placeholder="Login" required/></label><br/>
+            <label> Set password <input type="password" ng-model="registration.password" placeholder="Password" required/></label><br/>
+            <label> Confirm password <input type="password" ng-model="confirmPassword" placeholder="Password" required/> <span ng-if="password1 !== password2"> Passwords are different </span></label><br/>
+            <label> Give an email adress <input type="email" ng-model="registration.email" placeholder="Email" required/> </label>
+<!--
         <h2>Caracteristics of the boat</h2>
             <label> Give a name to your boat <input type="text" ng-model="boat.name" placeholder="Name of the boat" required/> {{boat.name}}</label><br/>
             <label> Tell us your university <input type="text" ng-model="boat.university" placeholder="University" required/> {{boat.university}}</label><br/>
@@ -23,9 +25,9 @@
                         {{crewmate.lastname}} {{crewmate.firstname}}
                     </label>
                 </div>
-            </div>
+            </div>-->
 
-            <input type="submit" class="btn btn-primary" ng-class="(signForm.$error.required || password1 !== password2) &&'disabled'" value="Check in"/>
+            <input type="submit" class="btn btn-primary" ng-class="(signForm.$error.required || registration.password !== confirmPassword) &&'disabled'" value="Check in"/>
     </form>
 
 </div>

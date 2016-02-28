@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'LocalStorageModule',
   ])
   .config(['$resourceProvider', function($resourceProvider) {
       // Don't strip trailing slashes from calculated URLs
@@ -71,4 +72,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .config(function ($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptorService');
+});

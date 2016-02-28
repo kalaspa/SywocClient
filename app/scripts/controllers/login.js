@@ -8,15 +8,27 @@
  * Controller of the sywocClientApp
  */
 angular.module('sywocClientApp')
-  .controller('LoginCtrl', ['$scope','LoginAPI' , function ($scope , LoginAPI) {
+  .controller('LoginCtrl', ['$scope','LoginAPI' , '$location' , function ($scope , LoginAPI , $location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    LoginAPI.login().save({username:"akamine",password:":73E4Nxy"}).$promise.then(function(data){
-        $scope.response = data;
-    });
+    $scope.loginData = {
+        username: "",
+        password: ""
+    };
 
+    $scope.message = "test";
+
+    $scope.signIn = function () {
+        LoginAPI.login($scope.loginData).then(function (response) {
+            $location.path('/home/');
+        },
+         function (err) {
+             console.log('test');
+             $scope.message = err.error_description;
+         });
+    };
 }]);
