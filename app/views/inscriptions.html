@@ -9,7 +9,7 @@
             <label> Set password <input type="password" ng-model="registration.password" placeholder="Password" required/></label><br/>
             <label> Confirm password <input type="password" ng-model="confirmPassword" placeholder="Password" required/> <span ng-if="password1 !== password2"> Passwords are different </span></label><br/>
             <label> Give an email adress <input type="email" ng-model="registration.email" placeholder="Email" required/> </label>
-<!--
+
         <h2>Caracteristics of the boat</h2>
             <label> Give a name to your boat <input type="text" ng-model="boat.name" placeholder="Name of the boat" required/> {{boat.name}}</label><br/>
             <label> Tell us your university <input type="text" ng-model="boat.university" placeholder="University" required/> {{boat.university}}</label><br/>
@@ -25,7 +25,7 @@
                         {{crewmate.lastname}} {{crewmate.firstname}}
                     </label>
                 </div>
-            </div>-->
+            </div>
 
             <input type="submit" class="btn btn-primary" ng-class="(signForm.$error.required || registration.password !== confirmPassword) &&'disabled'" value="Check in"/>
     </form>

@@ -10,7 +10,7 @@ angular.module('sywocClientApp')
 
         var authData = localStorageService.get('authorizationData');
         if (authData) {
-            config.headers.Authorization = 'Bearer ' + authData.token;
+            config.headers.Authorization = 'Token ' + authData.token;
         }
 
         return config;

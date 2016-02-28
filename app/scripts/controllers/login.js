@@ -20,7 +20,7 @@ angular.module('sywocClientApp')
         password: ""
     };
 
-    $scope.message = "test";
+    $scope.message = "";
 
     $scope.signIn = function () {
         LoginAPI.login($scope.loginData).then(function (response) {

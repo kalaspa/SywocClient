@@ -8,7 +8,7 @@
  * Controller of the sywocClientApp
  */
 angular.module('sywocClientApp')
-  .controller('InscriptionsCtrl', ['$scope', '$location', 'LoginAPI', function ($scope, $location, LoginAPI) {
+  .controller('InscriptionsCtrl', ['$scope', '$location', 'LoginAPI', 'InscriptionsAPI', function ($scope, $location, LoginAPI, InscriptionsAPI ) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -30,9 +30,12 @@ angular.module('sywocClientApp')
     $scope.signUp = function () {
 
         LoginAPI.saveRegistration($scope.registration).then(function (response) {
-
-            $scope.savedSuccessfully = true;
             $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
+            LoginAPI.login($scope.registration).then(function (response2){
+                InscriptionsAPI.addBoat($scope.boat).then(function(response3){
+                    $scope.message += "Boat added";
+                });
+            });
 
         },
          function (response) {
