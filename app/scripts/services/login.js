@@ -8,26 +8,26 @@ angular.module('sywocClientApp')
         var serviceBase = 'http://localhost:8000/';
         var authServiceFactory = {};
 
-        var _authentication = {
+        var authentication = {
             isAuth: false,
             username : ""
         };
 
-        var _saveRegistration = function (registration) {
-            _logOut();
+        var saveRegistration = function (registration) {
+            logOut();
             var data = "username=" + registration.username + "&password=" + registration.password + "&email=" + registration.email ;
             return $http.post(serviceBase + 'register/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
                 return response;
             });
         };
 
-        var _login = function (loginData) {
+        var login = function (loginData) {
             var data = "username=" + loginData.username + "&password=" + loginData.password;
             var deferred = $q.defer();
             $http.post(serviceBase + 'api-token-auth/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
                 localStorageService.set('authorizationData', { token: response.token, userName: loginData.username });
-                _authentication.isAuth = true;
-                _authentication.userName = loginData.userName;
+                authentication.isAuth = true;
+                authentication.userName = loginData.userName;
                 deferred.resolve(response);
             }).error(function (err, status) {
                 _logOut();
@@ -37,26 +37,26 @@ angular.module('sywocClientApp')
             return deferred.promise;
         };
 
-        var _logOut = function () {
+        var logOut = function () {
             localStorageService.remove('authorizationData');
-            _authentication.isAuth = false;
-            _authentication.userName = "";
+            authentication.isAuth = false;
+            authentication.userName = "";
         };
 
-        var _fillAuthData = function () {
+        var fillAuthData = function () {
             var authData = localStorageService.get('authorizationData');
             if (authData)
             {
-                _authentication.isAuth = true;
-                _authentication.userName = authData.userName;
+                authentication.isAuth = true;
+                authentication.userName = authData.userName;
             }
         }
-
-        authServiceFactory.saveRegistration = _saveRegistration;
-        authServiceFactory.login = _login;
-        authServiceFactory.logOut = _logOut;
-        authServiceFactory.fillAuthData = _fillAuthData;
-        authServiceFactory.authentication = _authentication;
-
-        return authServiceFactory;
+        return {
+            saveRegistration : saveRegistration,
+            login : login,
+            logOut : logOut,
+            fillAuthData : fillAuthData,
+            authentication : authentication,
+            serviceBase : serviceBase,
+        }
     }]);

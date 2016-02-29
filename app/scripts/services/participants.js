@@ -1,15 +1,17 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('ParticipantsAPI' , ['$http' , function($http){
-        return {
-            getBoat : getBoat
-        };
+    .factory('ParticipantsAPI' , ['$http' , 'LoginAPI' , function($http, LoginAPI){
+
+        var serviceBase = LoginAPI.serviceBase;
 
         function getBoat(boat){
-            return $http.get('http://localhost:8000/boats/').then(function(response){
-                console.log(response.data);
+            return $http.get(serviceBase + 'boats/').then(function(response){
                 return response.data;
             });
         }
+
+        return {
+            getBoat : getBoat
+        };
     }]);

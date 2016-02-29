@@ -14,6 +14,7 @@ angular.module('sywocClientApp')
       'AngularJS',
       'Karma'
     ];
+    
     ParticipantsAPI.getBoat().then(function(response){
         $scope.boats = response;
     });

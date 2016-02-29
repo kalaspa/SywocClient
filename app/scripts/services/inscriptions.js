@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('InscriptionsAPI' , ['$http' , function($http){
-        var serviceBase = "http://localhost:8000/"
+    .factory('InscriptionsAPI' , ['$http' , 'LoginAPI', function($http, LoginAPI){
+        var serviceBase = LoginAPI.serviceBase;
 
-        return {
-            addBoat : addBoat
-        };
 
         function addBoat(boat){
             var data = "name=" + boat.name + "&university=" + boat.university ;
@@ -14,4 +11,8 @@ angular.module('sywocClientApp')
                 return response;
             });
         }
+
+        return {
+            addBoat : addBoat
+        };
     }]);

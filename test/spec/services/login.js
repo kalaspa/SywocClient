@@ -12,18 +12,28 @@ describe('LoginAPI' , function() {
         $httpBackend = _$httpBackend_;
     }));
 
-    it('should implement login' , function(){
+    it('should implement login, saveRegistration , logout , authentication and fillAuthData' , function(){
         expect(LoginAPI.login).toBeDefined();
+        expect(LoginAPI.saveRegistration).toBeDefined();
+        expect(LoginAPI.logOut).toBeDefined();
+        expect(LoginAPI.fillAuthData).toBeDefined();
+        expect(LoginAPI.authentication).toBeDefined();
     });
 
     it('should receive a token when loging' , function(){
-        var token = LoginAPI.login().save({username:"akamine",password:":73E4Nxy"});
-        console.log(token);
-        expect(token).toBeDefined();
+        LoginAPI.login({username:"test",password:"test"}).then(function(response) {
+            expect(true).toBe(true);
+        }, function(response){
+            expect(false).toBe(true);
+        });
     });
 
     it('should not allow to log everybody' , function(){
-        expect(LoginAPI.login().save().$resolved).toBe(false);
+        LoginAPI.login({username:"",password:""}).then(function(response) {
+            expect(false).toBe(true);
+        }, function(response){
+            expect(true).toBe(true);
+        });
     });
 
 });

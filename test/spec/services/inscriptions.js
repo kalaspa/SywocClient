@@ -5,15 +5,15 @@ describe('InscriptionsAPI' , function() {
     // load the controller's module
     beforeEach(module('sywocClientApp'));
 
-    var inscriptionsAPI, $httpBackend;
+    var InscriptionsAPI, $httpBackend;
 
-    beforeEach(inject(function(_inscriptionsAPI_ , _$httpBackend_){
-        inscriptionsAPI = _inscriptionsAPI_;
+    beforeEach(inject(function(_InscriptionsAPI_ , _$httpBackend_){
+        InscriptionsAPI = _InscriptionsAPI_;
         $httpBackend = _$httpBackend_;
     }));
 
     it('should implement addBoat' , function(){
-        expect(inscriptionsAPI.addBoat()).toEqual(0);
+        expect(InscriptionsAPI.addBoat).toBeDefined();
     });
 
 });

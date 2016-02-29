@@ -4,27 +4,24 @@ angular.module('sywocClientApp')
 
     var authInterceptorServiceFactory = {};
 
-    var _request = function (config) {
-
+    var request = function (config) {
         config.headers = config.headers || {};
-
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             config.headers.Authorization = 'Token ' + authData.token;
         }
-
         return config;
     }
 
-    var _responseError = function (rejection) {
+    var responseError = function (rejection) {
         if (rejection.status === 401) {
             $location.path('/login');
         }
         return $q.reject(rejection);
     }
 
-    authInterceptorServiceFactory.request = _request;
-    authInterceptorServiceFactory.responseError = _responseError;
-
-    return authInterceptorServiceFactory;
+    return {
+            request : request,
+            responseError : responseError
+    };
 }]);
