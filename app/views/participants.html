@@ -4,8 +4,8 @@
     <ul ng-repeat="boat in boats">
         <li>
             {{boat.name}} from {{boat.university}} :
-            <ul ng-repeat="crewmate in crews">
-                <li ng-if="crewmate.boat === boat.id"> {{crewmate.firstname}} {{crewmate.lastname}} </li>
+            <ul ng-repeat="crewmate in crews | orderBy:'lastname' ">
+                <li ng-if="crewmate.boat === boat.id"> {{crewmate.lastname}} {{crewmate.firstname}} </li>
             </ul>
         </li>
     </ul>

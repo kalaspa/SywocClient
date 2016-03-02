@@ -49,6 +49,11 @@ angular
         controller: 'ParticipantsCtrl',
         controllerAs: 'participants'
       })
+      .when('/myboat/', {
+        templateUrl: 'views/myboat.html',
+        controller: 'MyBoatCtrl',
+        controllerAs: 'myboat'
+      })
       .when('/photos/', {
         templateUrl: 'views/photos.html',
         controller: 'PhotosCtrl',

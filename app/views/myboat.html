@@ -1,0 +1,37 @@
+<div class="well">
+    <h1>My boat</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title text-center">My boat</h4>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Name</dt> <dd>{{boat.name}}</dd>
+                <dt>University</dt> <dd>{{boat.university}}</dd>
+                <dt>State</dt>
+					<dd>
+						<span ng-if="boat.payment" class="label label-success">Paid</span>
+						<span ng-if="!boat.payment" class="label label-danger">Not paid</span>
+					</dd>
+        	</dl>
+        </div>
+    </div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title text-center">Crew</h4>
+		</div>
+		<div class="panel-body">
+			<span ng-repeat="crewmate in crew | orderBy:'lastname'">
+				<span class="glyphicon glyphicon-edit" ng-click="toggleModify(crewmate)"></span>
+                <span ng-hide="crewmate.fix">{{ crewmate.lastname | uppercase }} {{ crewmate.firstname }} </span>
+                <form ng-hide="!crewmate.fix" ng-submit="updateCrewmate(crewmate)">
+                    <input type="text" ng-model="crewmate.lastname"/>
+                    <input type="text" ng-model="crewmate.firstname"/>
+                    <input type="submit" class="btn btn-primary"/>
+                </form>
+                <br />
+		</div>
+	</div>
+</div>

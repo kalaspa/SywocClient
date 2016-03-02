@@ -40,6 +40,7 @@
 
             <ul class="nav navbar-nav navbar-left">
               <li ng-class="{ active: isActive('/documents/')}"><a ng-href="#/documents/">Documents</a></li>
+              <li ng-class="{ active: isActive('/myboat/')}" ng-hide="!isAuth || !hasBoat"><a ng-href="#/myboat/">My boat</a></li>
               <li ng-class="{ active: isActive('/participants/')}"><a ng-href="#/participants/">Participants</a></li>
               <li ng-class="{ active: isActive('/photos/')}"><a ng-href="#/photos/">Photos</a></li>
               <li ng-class="{ active: isActive('/us/')}"><a ng-href="#/us/">Us</a></li>
@@ -48,9 +49,9 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <a ng-href="#/login" ng-hide="isAuth()"><button type="button" class="btn btn-default navbar-btn">Log in</button></a>
-                <button type="button" class="btn btn-default navbar-btn" ng-hide="!isAuth()" ng-click="logout()">Log out</button>
-                <a ng-href="#/inscriptions" ng-hide="isAuth()"><button type="button" class="btn btn-default navbar-btn">Sign up</button></a>
+                <a ng-href="#/login" ng-hide="isAuth"><button type="button" class="btn btn-default navbar-btn">Log in</button></a>
+                <button type="button" class="btn btn-default navbar-btn" ng-hide="!isAuth" ng-click="logout()">Log out</button>
+                <a ng-href="#/inscriptions" ng-hide="isAuth"><button type="button" class="btn btn-default navbar-btn">Sign up</button></a>
             </ul>
           </div>
         </div>
@@ -105,12 +106,14 @@
         <script src="scripts/controllers/inscriptions.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/participants.js"></script>
+        <script src="scripts/controllers/myboat.js"></script>
         <script src="scripts/controllers/sponsors.js"></script>
         <script src="scripts/controllers/photos.js"></script>
         <script src="scripts/controllers/us.js"></script>
         <script src="scripts/controllers/contact.js"></script>
         <script src="scripts/services/inscriptions.js"></script>
         <script src="scripts/services/participants.js"></script>
+        <script src="scripts/services/myboat.js"></script>
         <script src="scripts/services/login.js"></script>
         <script src="scripts/services/authInterceptor.js"></script>
         <!-- endbuild -->

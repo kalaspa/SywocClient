@@ -25,9 +25,9 @@ angular.module('sywocClientApp')
             var data = "username=" + loginData.username + "&password=" + loginData.password;
             var deferred = $q.defer();
             $http.post(serviceBase + 'api-token-auth/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
-                localStorageService.set('authorizationData', { token: response.token, userName: loginData.username });
+                localStorageService.set('authorizationData', { token: response.token, username: loginData.username });
                 authentication.isAuth = true;
-                authentication.userName = loginData.userName;
+                authentication.username = loginData.username;
                 deferred.resolve(response);
             }).error(function (err, status) {
                 logOut();
@@ -40,7 +40,7 @@ angular.module('sywocClientApp')
         var logOut = function () {
             localStorageService.remove('authorizationData');
             authentication.isAuth = false;
-            authentication.userName = "";
+            authentication.username = "";
         };
 
         var fillAuthData = function () {
@@ -48,7 +48,7 @@ angular.module('sywocClientApp')
             if (authData)
             {
                 authentication.isAuth = true;
-                authentication.userName = authData.userName;
+                authentication.username = authData.username;
             }
         };
         return {
