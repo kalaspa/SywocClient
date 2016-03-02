@@ -30,7 +30,7 @@ angular.module('sywocClientApp')
                 authentication.userName = loginData.userName;
                 deferred.resolve(response);
             }).error(function (err, status) {
-                _logOut();
+                logOut();
                 deferred.reject(err);
             });
 
@@ -50,7 +50,7 @@ angular.module('sywocClientApp')
                 authentication.isAuth = true;
                 authentication.userName = authData.userName;
             }
-        }
+        };
         return {
             saveRegistration : saveRegistration,
             login : login,
@@ -58,5 +58,5 @@ angular.module('sywocClientApp')
             fillAuthData : fillAuthData,
             authentication : authentication,
             serviceBase : serviceBase,
-        }
+        };
     }]);

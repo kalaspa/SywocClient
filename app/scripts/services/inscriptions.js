@@ -12,7 +12,15 @@ angular.module('sywocClientApp')
             });
         }
 
+        function addCrewmate(crewmate , boatId){
+            var data = "lastname=" + crewmate.lastname + "&firstname=" + crewmate.firstname + "&boat=" + boatId;
+            return $http.post(serviceBase + 'crewmates/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
+                return response;
+            });
+        }
+
         return {
-            addBoat : addBoat
+            addBoat : addBoat,
+            addCrewmate : addCrewmate
         };
     }]);

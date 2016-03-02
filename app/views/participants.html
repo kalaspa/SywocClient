@@ -1,7 +1,12 @@
-<div class="container well">
+<div class="well">
     <h1>All the participants</h1>
-    <table border=1px >
-        <tr> <th>Name</th> <th>University</th> <th>Owner</th></tr>
-        <tr ng-repeat="boat in boats"> <td>{{boat.name}}</td> <td>{{boat.university}}</td><td>{{boat.owner}}</td> </tr>
-    </table>
+
+    <ul ng-repeat="boat in boats">
+        <li>
+            {{boat.name}} from {{boat.university}} :
+            <ul ng-repeat="crewmate in crews">
+                <li ng-if="crewmate.boat === boat.id"> {{crewmate.firstname}} {{crewmate.lastname}} </li>
+            </ul>
+        </li>
+    </ul>
 </div>

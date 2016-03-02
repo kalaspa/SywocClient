@@ -22,7 +22,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header" ng-controller="HeaderCtrl">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
@@ -33,12 +33,12 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">Sywoc</a>
+            <a class="navbar-brand" href="#/"><img src="images/favicon.ico"/></a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-left">
               <li ng-class="{ active: isActive('/documents/')}"><a ng-href="#/documents/">Documents</a></li>
               <li ng-class="{ active: isActive('/participants/')}"><a ng-href="#/participants/">Participants</a></li>
               <li ng-class="{ active: isActive('/photos/')}"><a ng-href="#/photos/">Photos</a></li>
@@ -57,10 +57,15 @@
       </div>
     </div>
 
-
-    <div ng-view></div>
-
-
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            <div ng-view></div>
+        </div>
+        <div class="col-md-2">
+            <a class="twitter-timeline"  href="https://twitter.com/SYWoC" data-widget-id="705013010994229248">Tweets de @SYWoC</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+    </div>
     <div class="footer well">
         <p> <span class="glyphicon glyphicon-user"> </span> Designed by Pierre Auclair, contact at <a href="mailto:pierre.auclair@polytechnique.edu">pierre.auclair@polytechnique.edu</a></p>
     </div>

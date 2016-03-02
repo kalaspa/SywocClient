@@ -29,11 +29,20 @@ angular.module('sywocClientApp')
 
     $scope.signUp = function () {
 
-        LoginAPI.saveRegistration($scope.registration).then(function (response) {
-            $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
-            LoginAPI.login($scope.registration).then(function (response2){
-                InscriptionsAPI.addBoat($scope.boat).then(function(response3){
-                    $scope.message += "Boat added";
+        LoginAPI.saveRegistration($scope.registration).then(function (resp) {
+
+            $scope.message = "User has been registered successfully. ";
+            LoginAPI.login($scope.registration).then(function (resp2){
+
+                InscriptionsAPI.addBoat($scope.boat).then(function(resp3){
+
+                    $scope.message += "Boat added. ";
+                    for (var i = 0 ; i < $scope.boat.number ; i++){
+                        var crewmate = $scope.boat.crew[i];
+                        if (crewmate.lastname !== "" && crewmate.firstname !== ""){
+                            InscriptionsAPI.addCrewmate(crewmate , resp3.data.id);
+                        }
+                    }
                 });
             });
 

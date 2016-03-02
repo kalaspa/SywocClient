@@ -11,14 +11,14 @@ angular.module('sywocClientApp')
             config.headers.Authorization = 'Token ' + authData.token;
         }
         return config;
-    }
+    };
 
     var responseError = function (rejection) {
         if (rejection.status === 401) {
             $location.path('/login');
         }
         return $q.reject(rejection);
-    }
+    };
 
     return {
             request : request,
