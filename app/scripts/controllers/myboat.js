@@ -16,11 +16,11 @@ angular.module('sywocClientApp')
     ];
 
     MyBoatAPI.getBoat().then(function(response){
-        if (response.length != 0){
+        if (response.length !== 0){
             $scope.boat = response[0];
         }
         else{
-            $location.path("/home/")
+            $location.path("/home/");
         }
     });
 

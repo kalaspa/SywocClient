@@ -10,7 +10,9 @@ angular.module('sywocClientApp')
 
         var authentication = {
             isAuth: false,
-            username : ""
+            username : "",
+            isAdmin: false,
+            hasBoat: false,
         };
 
         var saveRegistration = function (registration) {
@@ -25,10 +27,22 @@ angular.module('sywocClientApp')
             var data = "username=" + loginData.username + "&password=" + loginData.password;
             var deferred = $q.defer();
             $http.post(serviceBase + 'api-token-auth/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
-                localStorageService.set('authorizationData', { token: response.token, username: loginData.username });
                 authentication.isAuth = true;
                 authentication.username = loginData.username;
                 deferred.resolve(response);
+
+                $http.get(serviceBase + 'users/').success(function(response){
+                    authentication.isAdmin = true;
+                }).error(function(err, status){
+                    authentication.isAdmin = false;
+                });
+
+                $http.get(serviceBase + 'boats/myboat/').success(function(response){
+                    authentication.hasBoat = (response.length !== 0);
+                }).error(function(err,status){
+                    authentication.hasBoat = false;
+                });
+                localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isadmin: authentication.isAdmin, hasboat: authentication.hasBoat});
             }).error(function (err, status) {
                 logOut();
                 deferred.reject(err);
@@ -41,6 +55,8 @@ angular.module('sywocClientApp')
             localStorageService.remove('authorizationData');
             authentication.isAuth = false;
             authentication.username = "";
+            authentication.isAdmin = false;
+            authentication.hasBoat = false;
         };
 
         var fillAuthData = function () {
@@ -49,6 +65,8 @@ angular.module('sywocClientApp')
             {
                 authentication.isAuth = true;
                 authentication.username = authData.username;
+                authentication.isAdmin = authData.isadmin;
+                authentication.hasBoat = authData.hasboat;
             }
         };
         return {

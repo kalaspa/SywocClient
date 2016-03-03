@@ -8,7 +8,7 @@
  * Controller of the sywocClientApp
  */
 angular.module('sywocClientApp')
-  .controller('HeaderCtrl', ['$scope', '$location', 'LoginAPI', 'MyBoatAPI', function ($scope, $location, LoginAPI, MyBoatAPI) {
+  .controller('HeaderCtrl', ['$scope', '$location', 'LoginAPI', 'MyBoatAPI', 'AdminAPI', function ($scope, $location, LoginAPI, MyBoatAPI, AdminAPI) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -19,11 +19,17 @@ angular.module('sywocClientApp')
         return viewLocation === $location.path();
     };
 
-    $scope.isAuth = LoginAPI.authentication.isAuth;
+    $scope.isAuth = function(){
+        return LoginAPI.authentication.isAuth;
+    };
 
-    MyBoatAPI.getBoat().then(function(resp){
-        $scope.hasBoat = (resp.length != 0)
-    })
+    $scope.hasBoat = function(){
+        return LoginAPI.authentication.hasBoat;
+    };
+
+    $scope.isAdmin = function(){
+        return LoginAPI.authentication.isAdmin;
+    };
 
     $scope.logout = function () {
         LoginAPI.logOut();
