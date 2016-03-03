@@ -31,18 +31,23 @@ angular.module('sywocClientApp')
                 authentication.username = loginData.username;
                 deferred.resolve(response);
 
-                $http.get(serviceBase + 'users/').success(function(response){
+                $http.get(serviceBase + 'users/').success(function(resp){
                     authentication.isAdmin = true;
+                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
                 }).error(function(err, status){
                     authentication.isAdmin = false;
+                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
                 });
 
-                $http.get(serviceBase + 'boats/myboat/').success(function(response){
-                    authentication.hasBoat = (response.length !== 0);
+                $http.get(serviceBase + 'boats/myboat/').success(function(resp){
+                    authentication.hasBoat = (response.length > 0);
+                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
+                    console.log(localStorageService.get('authorizationData'));
                 }).error(function(err,status){
                     authentication.hasBoat = false;
+                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
                 });
-                localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isadmin: authentication.isAdmin, hasboat: authentication.hasBoat});
+                localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
             }).error(function (err, status) {
                 logOut();
                 deferred.reject(err);
@@ -65,8 +70,8 @@ angular.module('sywocClientApp')
             {
                 authentication.isAuth = true;
                 authentication.username = authData.username;
-                authentication.isAdmin = authData.isadmin;
-                authentication.hasBoat = authData.hasboat;
+                authentication.isAdmin = authData.isAdmin;
+                authentication.hasBoat = authData.hasBoat;
             }
         };
         return {

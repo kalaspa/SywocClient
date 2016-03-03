@@ -1,12 +1,20 @@
 <div class="well">
     <h1>All the participants</h1>
 
-    <ul ng-repeat="boat in boats">
-        <li>
-            {{boat.name}} from {{boat.university}} :
-            <ul ng-repeat="crewmate in crews | orderBy:'lastname' ">
-                <li ng-if="crewmate.boat === boat.id"> {{crewmate.lastname}} {{crewmate.firstname}} </li>
-            </ul>
-        </li>
-    </ul>
+    <div class="panel panel-default" ng-repeat="boat in boats">
+        <div class="panel-heading">
+            <h4 class="panel-title text-center">{{boat.name}} from {{boat.university}} </h4>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Crew</dt>
+                <dd ng-repeat="crewmate in crews | filter: {boat: boat.id} | orderBy: 'lastname'">
+                    <div ng-if="crewmate.boat === boat.id">
+                        <span>{{ crewmate.lastname | uppercase }} {{ crewmate.firstname }}</span>
+                        <br />
+                    </div>
+                </dd>
+        	</dl>
+        </div>
+    </div>
 </div>
