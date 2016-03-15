@@ -20,6 +20,7 @@ angular.module('sywocClientApp')
 
     $scope.savedSuccessfully = false;
     $scope.message = "";
+    $scope.success = "";
 
     $scope.registration = {
         username: "",
@@ -31,12 +32,12 @@ angular.module('sywocClientApp')
 
         LoginAPI.saveRegistration($scope.registration).then(function (resp) {
 
-            $scope.message = "User has been registered successfully. ";
+            $scope.success = "User has been registered successfully. ";
             LoginAPI.login($scope.registration).then(function (resp2){
 
                 InscriptionsAPI.addBoat($scope.boat).then(function(resp3){
 
-                    $scope.message += "Boat added. ";
+                    $scope.success += "Boat added. ";
                     for (var i = 0 ; i < $scope.boat.number ; i++){
                         var crewmate = $scope.boat.crew[i];
                         if (crewmate.lastname !== "" && crewmate.firstname !== ""){

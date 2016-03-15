@@ -26,7 +26,6 @@ angular.module('sywocClientApp')
 
     MyBoatAPI.getCrew().then(function(response){
         $scope.crew = response;
-        console.log(response);
     });
 
     $scope.toggleModify = function(crewmate){

@@ -1,33 +1,60 @@
+<div class="alert alert-danger" ng-hide="message==''">
+    <p>
+        {{message}}
+    </p>
+</div>
+
+<div class="alert alert-success" ng-hide="success==''">
+    <p>
+        {{success}}
+    </p>
+</div>
 <div class="well">
     <h1>Signing up a boat</h1>
 
-    <p>{{message}}</p>
+
 
     <form name="signForm" ng-submit="signUp()">
-        <h2>Your account</h2>
-            <label> Set login <input type="text" ng-model="registration.username" placeholder="Login" required/></label><br/>
-            <label> Set password <input type="password" ng-model="registration.password" placeholder="Password" required/></label><br/>
-            <label> Confirm password <input type="password" ng-model="confirmPassword" placeholder="Password" required/> <span ng-if="password1 !== password2"> Passwords are different </span></label><br/>
-            <label> Give an email adress <input type="email" ng-model="registration.email" placeholder="Email" required/> </label>
 
-        <h2>Caracteristics of the boat</h2>
-            <label> Give a name to your boat <input type="text" ng-model="boat.name" placeholder="Name of the boat" required/> {{boat.name}}</label><br/>
-            <label> Tell us your university <input type="text" ng-model="boat.university" placeholder="University" required/> {{boat.university}}</label><br/>
+        <div class="panel panel-default">
 
-        <h2>Crew</h2>
-
-            <label> Number of crewmates, from 5 to 10 <input type="number" ng-model="boat.number" placeholder="Number of crewmates" required min="5" max="10"/> </label>
-            <div ng-repeat="crewmate in boat.crew">
-                <div ng-if="$index < boat.number">
-                    <label>
-                        <input type="text" ng-model="crewmate.firstname" required/>
-                        <input type="text" ng-model="crewmate.lastname" required/>
-                        {{crewmate.lastname}} {{crewmate.firstname}}
-                    </label>
-                </div>
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Sign Up</h2>
             </div>
 
-            <input type="submit" class="btn btn-primary" ng-class="(signForm.$error.required || registration.password !== confirmPassword) &&'disabled'" value="Check in"/>
-    </form>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt> Your account </dt>
+                        <dd> <label> Set login <input type="text" ng-model="registration.username" placeholder="Login" required/></label><br/> </dd>
+                        <dd> <label> Set password <input type="password" ng-model="registration.password" placeholder="Password" required/></label><br/> </dd>
+                        <dd> <label> Confirm password <input type="password" ng-model="confirmPassword" placeholder="Password" required/> <span ng-if="registration.password !== confirmPassword"> Passwords are different </span></label><br/> </dd>
+                        <dd> <label> Give an email adress <input type="email" ng-model="registration.email" placeholder="Email" required/> </label> </dd>
+
+
+                <dl class="dl-horizontal">
+                    <dt> Caracteristics</dt>
+                        <dd> <label> Name of your boat <input type="text" ng-model="boat.name" placeholder="Name of the boat" required/></label><br/> </dd>
+                        <dd> <label> Your university <input type="text" ng-model="boat.university" placeholder="University" required/></label><br/> </dd>
+
+                <dl class="dl-horizontal">
+                    <dt> Crew</dt>
+
+                    <dd> <label> Number of crewmates, from 5 to 10 <input type="number" ng-model="boat.number" placeholder="Number of crewmates" required min="5" max="10"/> </label></dd>
+                    <div ng-repeat="crewmate in boat.crew">
+                        <div ng-if="$index < boat.number">
+                            <dd> <label>
+                                <input type="text" ng-model="crewmate.firstname" required/>
+                                <input type="text" ng-model="crewmate.lastname" required/>
+                            </label></dd>
+                        </div>
+                    </div>
+
+                </dl>
+                </div>
+        </div>
+                <label> The inscription code <input type="text" ng-model="registration.code" placeholder="Inscription code" required/> </label><br/>
+                <input type="submit" class="btn btn-primary" ng-class="(signForm.$error.required || registration.password !== confirmPassword) &&'disabled'" value="Check in"/>
+        </form>
+
 
 </div>

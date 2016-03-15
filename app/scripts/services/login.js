@@ -40,7 +40,7 @@ angular.module('sywocClientApp')
                 });
 
                 $http.get(serviceBase + 'boats/myboat/').success(function(resp){
-                    authentication.hasBoat = (response.length > 0);
+                    authentication.hasBoat = (resp.length > 0);
                     localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
                     console.log(localStorageService.get('authorizationData'));
                 }).error(function(err,status){

@@ -1,0 +1,10 @@
+<div class="jumbotron well">
+    <h1>Add Course </h1>
+
+    <form name="loginForm" ng-submit="addCourse()">
+        <label> Name <input type="text" ng-model="course.name" placeholder="Name" required/></label><br/>
+        <label> Date <input type="text" ng-model="course.date" placeholder="Date in YYYY-MM-DD format" required/></label><br/>
+
+        <input type="submit" class="btn btn-primary" ng-class="loginForm.$error.required && 'disabled'" value="Add Course" />
+    </form>
+</div>

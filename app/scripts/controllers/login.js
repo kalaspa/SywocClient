@@ -27,8 +27,8 @@ angular.module('sywocClientApp')
             $location.path('/home/');
         },
          function (err) {
-             console.log('test');
-             $scope.message = err.error_description;
+             $scope.message = err.non_field_errors[0];
+             console.log(err);
          });
     };
 }]);
