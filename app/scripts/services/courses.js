@@ -20,14 +20,14 @@ angular.module('sywocClientApp')
         function addCourse(course){
             var data = "name=" + course.name + "&date=" + course.date ;
             return $http.post(serviceBase + 'courses/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
-                return response;
+                return response.data;
             });
         }
 
         function addRanking(ranking , boatId, courseId){
-            var data = "boat" + boatId + "&course=" + courseId + "&rank=" + ranking.rank + "&score=" + ranking.score ;
+            var data = "boat=" + boatId + "&course=" + courseId + "&rank=" + ranking;
             return $http.post(serviceBase + 'rankings/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
-                return response;
+                return response.data;
             });
         }
 

@@ -1,9 +1,41 @@
+<div class="alert alert-success" ng-hide="success==''">
+    <p>
+        {{success}}
+    </p>
+</div>
+
+<div class="alert alert-success" ng-hide="message==''">
+    <p>
+        {{message}}
+    </p>
+</div>
+
 <div class="jumbotron well">
     <h1>Add Course </h1>
 
     <form name="loginForm" ng-submit="addCourse()">
         <label> Name <input type="text" ng-model="course.name" placeholder="Name" required/></label><br/>
         <label> Date <input type="text" ng-model="course.date" placeholder="Date in YYYY-MM-DD format" required/></label><br/>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Panel heading</div>
+
+      <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Rank </th>
+                        <th> Name of the boat</th>
+                    </tr>
+                </thead>
+                <tbody ui-sortable ng-model="boats">
+                    <tr ng-repeat="boat in boats" class="ui-state-default" style="padding:5px 10px; cursor: move;">
+                        <td> {{$index + 1}} </td>
+                        <td> {{boat.name}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <input type="submit" class="btn btn-primary" ng-class="loginForm.$error.required && 'disabled'" value="Add Course" />
     </form>

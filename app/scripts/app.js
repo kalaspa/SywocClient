@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'LocalStorageModule',
+    'ui.sortable',
   ])
   .config(['$resourceProvider', function($resourceProvider) {
       // Don't strip trailing slashes from calculated URLs
@@ -58,6 +59,11 @@ angular
         templateUrl: 'views/participants.html',
         controller: 'ParticipantsCtrl',
         controllerAs: 'participants'
+      })
+      .when('/rankings/', {
+        templateUrl: 'views/ranks.html',
+        controller: 'RanksCtrl',
+        controllerAs: 'ranks'
       })
       .when('/myboat/', {
         templateUrl: 'views/myboat.html',

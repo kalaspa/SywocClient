@@ -23,7 +23,7 @@
     <!-- Add your site or application content here -->
     <div class="header" ng-controller="HeaderCtrl">
       <div class="navbar navbar-inverse" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -44,6 +44,7 @@
               <li ng-class="{ active: isActive('/admin/')}" ng-hide="!isAdmin()"><a ng-href="#/admin/">Admin</a></li>
               <li ng-class="{ active: isActive('/courses/')}" ng-hide="!isAdmin()"><a ng-href="#/courses/">Courses</a></li>
               <li ng-class="{ active: isActive('/participants/')}"><a ng-href="#/participants/">Participants</a></li>
+              <li ng-class="{ active: isActive('/rankings/')}"><a ng-href="#/rankings/">Rankings</a></li>
               <li ng-class="{ active: isActive('/photos/')}"><a ng-href="#/photos/">Photos</a></li>
               <li ng-class="{ active: isActive('/us/')}"><a ng-href="#/us/">Us</a></li>
               <li ng-class="{ active: isActive('/sponsors/')}"><a ng-href="#/sponsors/">Sponsors</a></li>
@@ -97,6 +98,8 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -110,6 +113,7 @@
         <script src="scripts/controllers/courses.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/participants.js"></script>
+        <script src="scripts/controllers/ranks.js"></script>
         <script src="scripts/controllers/myboat.js"></script>
         <script src="scripts/controllers/sponsors.js"></script>
         <script src="scripts/controllers/photos.js"></script>

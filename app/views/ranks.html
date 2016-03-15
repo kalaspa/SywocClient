@@ -1,0 +1,27 @@
+<div class="well">
+
+    <h2>Rankings</h2>
+
+    <div class="panel panel-default" ng-repeat="course in courses">
+        <div class="panel-heading">
+            <h4 class="panel-title text-center">{{course.name}} on {{course.date | date: 'mediu'}} </h4>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Rank </th>
+                        <th> Name of the boat</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr ng-repeat="ranking in rankings | orderBy: 'rank'" ng-if="ranking.course == course.id">
+                        <td> {{ranking.rank + 1}} </td>
+                        <td> {{boat(ranking.boat).name}}</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
