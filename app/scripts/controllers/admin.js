@@ -68,8 +68,6 @@ angular.module('sywocClientApp')
             AdminAPI.deleteUser($scope.user(boat));
             $route.reload();
         });
-
-
     };
 
   }]);

@@ -40,3 +40,38 @@
         <input type="submit" class="btn btn-primary" ng-class="loginForm.$error.required && 'disabled'" value="Add Course" />
     </form>
 </div>
+
+<div class="well">
+
+    <h2>Rankings</h2>
+
+    <div class="panel panel-default" ng-repeat="course in courses">
+        <div class="panel-heading">
+            <h4 class="panel-title text-center">{{course.name}} on {{course.date | date: 'medium'}} </h4>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Rank </th>
+                        <th> Name of the boat</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr ng-repeat="ranking in rankings | orderBy: 'rank'" ng-if="ranking.course == course.id">
+                        <td> {{ranking.rank + 1}} </td>
+                        <td> {{boat(ranking.boat).name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button type='button' class="btn btn-danger" ng-click="toggleDelete(course)">Delete </button>
+            </div>
+        </div>
+        <div class="alert alert-danger text-center" ng-if="course.delete">
+            <p> Are you sure you want to delete this course ? </p>
+            <button type="button" class="btn btn-danger" ng-click="deleteCourse(course)">Delete definitively</button>
+        </div>
+    </div>
+
+</div>

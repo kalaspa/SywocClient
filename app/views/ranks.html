@@ -4,7 +4,7 @@
 
     <div class="panel panel-default" ng-repeat="course in courses">
         <div class="panel-heading">
-            <h4 class="panel-title text-center">{{course.name}} on {{course.date | date: 'mediu'}} </h4>
+            <h4 class="panel-title text-center">{{course.name}} on {{course.date | date: 'medium'}} </h4>
         </div>
         <div class="panel-body">
             <table class="table">
@@ -17,7 +17,7 @@
                 <tbody >
                     <tr ng-repeat="ranking in rankings | orderBy: 'rank'" ng-if="ranking.course == course.id">
                         <td> {{ranking.rank + 1}} </td>
-                        <td> {{boat(ranking.boat).name}}</td> 
+                        <td> {{boat(ranking.boat).name}}</td>
                     </tr>
                 </tbody>
             </table>

@@ -31,10 +31,20 @@ angular.module('sywocClientApp')
             });
         }
 
+        function deleteCourse(course){
+            return $http.delete(serviceBase + 'courses/' + course.id + '/');
+        }
+
+        function deleteRanking(ranking){
+            return $http.delete(serviceBase + 'rankings/' + ranking.id + '/');
+        }
+
         return {
             getCourses : getCourses,
             getRankings : getRankings,
             addCourse : addCourse,
-            addRanking : addRanking
+            addRanking : addRanking,
+            deleteRanking : deleteRanking,
+            deleteCourse : deleteCourse,
         };
     }]);
