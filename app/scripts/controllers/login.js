@@ -28,7 +28,6 @@ angular.module('sywocClientApp')
         },
          function (err) {
              $scope.message = err.non_field_errors[0];
-             console.log(err);
          });
     };
 }]);

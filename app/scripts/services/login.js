@@ -23,34 +23,46 @@ angular.module('sywocClientApp')
             });
         };
 
-        var login = function (loginData) {
+        var logIn = function (loginData) {
             var data = "username=" + loginData.username + "&password=" + loginData.password;
             var deferred = $q.defer();
             $http.post(serviceBase + 'api-token-auth/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
                 authentication.isAuth = true;
                 authentication.username = loginData.username;
+                authentication.token = response.token;
                 deferred.resolve(response);
 
-                $http.get(serviceBase + 'users/').success(function(resp){
-                    authentication.isAdmin = true;
-                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
-                }).error(function(err, status){
-                    authentication.isAdmin = false;
-                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
-                });
-
-                $http.get(serviceBase + 'boats/myboat/').success(function(resp){
-                    authentication.hasBoat = (resp.length > 0);
-                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
-                    console.log(localStorageService.get('authorizationData'));
-                }).error(function(err,status){
-                    authentication.hasBoat = false;
-                    localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
-                });
                 localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
             }).error(function (err, status) {
                 logOut();
                 deferred.reject(err);
+            });
+
+            return deferred.promise;
+        };
+
+        var login = function (loginData){
+            var deferred = $q.defer();
+
+            logIn(loginData).then(function(response){
+                $http.get(serviceBase + 'users/').then(function(){
+                    authentication.isAdmin = true;
+                    return $http.get(serviceBase + 'boats/myboat/');
+                }, function(){
+                    authentication.isAdmin = false;
+                    return $http.get(serviceBase + 'boats/myboat/');
+                })
+                .then(function(resp){
+                    authentication.hasBoat = (resp.data.length > 0);
+                    localStorageService.set('authorizationData', { token: authentication.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
+                    deferred.resolve(response);
+                } , function(){
+                    authentication.hasBoat = false;
+                    localStorageService.set('authorizationData', { token: authentication.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
+                    deferred.resolve(response);
+                });
+            } , function(error){
+                deferred.reject(error);
             });
 
             return deferred.promise;

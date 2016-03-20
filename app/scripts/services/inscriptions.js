@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('InscriptionsAPI' , ['$http' , 'LoginAPI', function($http, LoginAPI){
+    .factory('InscriptionsAPI' , ['$http' , '$q' , 'LoginAPI', function($http, $q, LoginAPI){
         var serviceBase = LoginAPI.serviceBase;
 
 
@@ -19,8 +19,28 @@ angular.module('sywocClientApp')
             });
         }
 
+        function signUp(registration , boat , crewmates , number){
+
+            return LoginAPI.saveRegistration(registration)
+            .then(function(){
+                return LoginAPI.login(registration);
+            }).then(function(){
+                return addBoat(boat);
+            }).then(function(resp){
+                var boatId = resp.data.id;
+                var promises = [];
+                for (var i = 0 ; i < number ; i++){
+                    if (crewmates[i].lastname !== "" && crewmates[i].firstname !== ""){
+                        promises.push(addCrewmate( crewmates[i] , boatId));
+                    }
+                }
+                return $q.all(promises);
+            });
+        }
+
         return {
             addBoat : addBoat,
-            addCrewmate : addCrewmate
+            addCrewmate : addCrewmate,
+            signUp : signUp
         };
     }]);
