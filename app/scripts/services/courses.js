@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sywocClientApp')
-    .factory('CoursesAPI' , ['$http' , 'LoginAPI' , function($http, LoginAPI){
+    .factory('CoursesAPI' , ['$http' , 'LoginAPI' , '$q' , function($http, LoginAPI , $q){
 
         var serviceBase = LoginAPI.serviceBase;
 
@@ -39,12 +39,35 @@ angular.module('sywocClientApp')
             return $http.delete(serviceBase + 'rankings/' + ranking.id + '/');
         }
 
+        function deleteIt(course , rankings){
+            return deleteCourse(course)
+            .then(function(){
+                var promises = [];
+                for (var i = 0 ; i < rankings.length ; i++){
+                    if (rankings[i].course === course.id){
+                        promises.push(deleteRanking( rankings[i]));
+                    }
+                }
+                return $q.all(promises);
+            });
+        }
+
+        function addIt(course , boats){
+            return addCourse(course)
+            .then(function(response){
+                var promises = [];
+                var courseId = response.id;
+                for (var i = 0 ; i < boats.length ; i++){
+                    promises.push(addRanking( i , boats[i].id , courseId));
+                }
+                return $q.all(promises);
+            });
+        }
+
         return {
             getCourses : getCourses,
             getRankings : getRankings,
-            addCourse : addCourse,
-            addRanking : addRanking,
-            deleteRanking : deleteRanking,
-            deleteCourse : deleteCourse,
+            deleteIt : deleteIt,
+            addIt : addIt
         };
     }]);

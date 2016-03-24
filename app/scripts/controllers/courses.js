@@ -19,7 +19,12 @@ angular.module('sywocClientApp')
     $scope.success = "";
 
     ParticipantsAPI.getBoat().then(function(response){
-        $scope.boats = response;
+        $scope.boats = [];
+        for (var i = 0 ; i < response.length ; i++){
+            if (!response[i].abandon || response[i].abandon == null){
+                $scope.boats.push(response[i]);
+            }
+        }
     });
 
     CoursesAPI.getCourses().then(function(response){
@@ -31,17 +36,9 @@ angular.module('sywocClientApp')
     });
 
     $scope.addCourse = function() {
-        CoursesAPI.addCourse($scope.course).then(function(response){
-            $scope.message = "Course added";
-            console.log(response);
-            var courseId = response.id;
-            for (var i = 0 ; i < $scope.boats.length ; i++){
-                CoursesAPI.addRanking( i , $scope.boats[i].id , courseId);
-            }
-        },function (err) {
-             $scope.message = err.non_field_errors[0];
-         }
-        );
+        CoursesAPI.addIt($scope.course , $scope.boats).then(function(){
+            $route.reload();
+        });
     };
 
     $scope.boat = function(boatId){
@@ -58,12 +55,7 @@ angular.module('sywocClientApp')
     };
 
     $scope.deleteCourse = function(course){
-        CoursesAPI.deleteCourse(course).then(function(){
-            for (var i = 0 ; i < $scope.rankings.length ; i++){
-                if ($scope.rankings[i].course === course.id){
-                    CoursesAPI.deleteRanking($scope.rankings[i]);
-                }
-            }
+        CoursesAPI.deleteIt(course , $scope.rankings).then(function(){
             $route.reload();
         });
     };

@@ -22,17 +22,12 @@ angular.module('sywocClientApp')
     $scope.message = "";
     $scope.success = "";
 
-    $scope.registration = {
-        username: "",
-        password: "",
-        email: ""
-    };
-
     $scope.signUp = function () {
 
         InscriptionsAPI.signUp($scope.registration , $scope.boat , $scope.boat.crew , $scope.boat.number)
         .then(function(){
             $scope.success = "You registered successfully";
+            $scope.message = "";
         },function (response) {
              var errors = [];
              for (var key in response.data) {
@@ -41,6 +36,7 @@ angular.module('sywocClientApp')
                  }
              }
              $scope.message = "Failed to register user due to:" + ' ' + errors.join(' ');
+             $scope.success = "";
          });
     };
 

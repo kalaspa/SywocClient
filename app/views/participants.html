@@ -3,7 +3,11 @@
 
     <div class="panel panel-default" ng-repeat="boat in boats">
         <div class="panel-heading">
-            <h4 class="panel-title text-center">{{boat.name}} from {{boat.university}} </h4>
+            <h4 class="panel-title text-center">
+                {{boat.name}} from {{boat.university}}
+                <span class='label label-success' ng-hide='boat.abandon'>Valid</span>
+                <span class='label label-danger' ng-if='boat.abandon'>Abandoned</span>
+            </h4>
         </div>
         <div class="panel-body">
             <dl class="dl-horizontal">

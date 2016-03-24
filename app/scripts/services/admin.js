@@ -23,15 +23,16 @@ angular.module('sywocClientApp')
             return $http.delete(serviceBase + 'users/' + user.id + '/');
         }
 
-        function pay(boat){
-            return $http.post(serviceBase + 'boats/' + boat.id + '/pay/');
+        function post(boat , method){
+            return $http.post(serviceBase + 'boats/' + boat.id + '/' + method + '/');
         }
+
 
         return {
             getUsers : getUsers,
             deleteBoat : deleteBoat,
             deleteCrewmate : deleteCrewmate,
             deleteUser : deleteUser,
-            pay : pay
+            post : post
         };
     }]);

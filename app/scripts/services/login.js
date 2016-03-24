@@ -17,7 +17,7 @@ angular.module('sywocClientApp')
 
         var saveRegistration = function (registration) {
             logOut();
-            var data = "username=" + registration.username + "&password=" + registration.password + "&email=" + registration.email ;
+            var data = "username=" + registration.username + "&password=" + registration.password + "&email=" + registration.email + "&secret_code=" + registration.code;
             return $http.post(serviceBase + 'register/', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
                 return response;
             });

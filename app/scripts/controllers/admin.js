@@ -38,8 +38,8 @@ angular.module('sywocClientApp')
         return null;
     };
 
-    $scope.pay = function(boat){
-        AdminAPI.pay(boat).then(function(resp){
+    $scope.post = function(boat , method){
+        AdminAPI.post(boat , method).then(function(resp){
             $route.reload();
         });
     };

@@ -9,8 +9,16 @@
             <dl class="dl-horizontal">
                 <dt>State</dt>
 					<dd>
-						<button ng-if="boat.payment" class="btn btn-success" ng-click="pay(boat)">Paid</button>
-						<button ng-if="!boat.payment" class="btn btn-danger" ng-click="pay(boat)">Not paid</button>
+						<button ng-if="boat.payment1" class="btn btn-success" ng-click="post(boat , 'pay1')">First paiment</button>
+						<button ng-if="!boat.payment1" class="btn btn-danger" ng-click="post(boat , 'pay1')">First Paiment</button>
+					</dd>
+                    <dd>
+						<button ng-if="boat.payment2" class="btn btn-success" ng-click="post(boat , 'pay2')">Second paiment</button>
+						<button ng-if="!boat.payment2" class="btn btn-danger" ng-click="post(boat , 'pay2')">Second paiment</button>
+					</dd>
+                    <dd>
+						<button ng-if="!boat.abandon" class="btn btn-success" ng-click="post(boat , 'abandon')">Valid</button>
+						<button ng-if="boat.abandon" class="btn btn-danger" ng-click="post(boat , 'abandon')">Abandon</button>
 					</dd>
                 <dt>Mail</dt>
                     <dd>
