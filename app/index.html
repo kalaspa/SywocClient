@@ -40,22 +40,22 @@
 
             <ul class="nav navbar-nav navbar-left">
               <li ng-class="{ active: isActive('/documents/')}"><a ng-href="#/documents/">Documents</a></li>
-              <li ng-class="{ active: isActive('/myboat/')}" ng-hide="!isAuth() || !hasBoat()"><a ng-href="#/myboat/">My boat</a></li>
-              <li ng-class="{ active: isActive('/admin/')}" ng-hide="!isAdmin()"><a ng-href="#/admin/">Admin</a></li>
-              <li ng-class="{ active: isActive('/courses/')}" ng-hide="!isAdmin()"><a ng-href="#/courses/">Courses</a></li>
-              <li ng-class="{ active: isActive('/participants/')}"><a ng-href="#/participants/">Participants</a></li>
-              <li ng-class="{ active: isActive('/rankings/')}"><a ng-href="#/rankings/">Rankings</a></li>
+              <!-- <li ng-class="{ active: isActive('/myboat/')}" ng-hide="!isAuth() || !hasBoat()"><a ng-href="#/myboat/">My boat</a></li> -->
+              <!-- <li ng-class="{ active: isActive('/admin/')}" ng-hide="!isAdmin()"><a ng-href="#/admin/">Admin</a></li> -->
+              <!-- <li ng-class="{ active: isActive('/courses/')}" ng-hide="!isAdmin()"><a ng-href="#/courses/">Courses</a></li> -->
+              <!-- <li ng-class="{ active: isActive('/participants/')}"><a ng-href="#/participants/">Participants</a></li> -->
+              <!-- <li ng-class="{ active: isActive('/rankings/')}"><a ng-href="#/rankings/">Rankings</a></li> -->
               <li ng-class="{ active: isActive('/photos/')}"><a ng-href="#/photos/">Photos</a></li>
-              <li ng-class="{ active: isActive('/us/')}"><a ng-href="#/us/">Us</a></li>
+              <!-- <li ng-class="{ active: isActive('/us/')}"><a ng-href="#/us/">Us</a></li>-->
               <li ng-class="{ active: isActive('/sponsors/')}"><a ng-href="#/sponsors/">Sponsors</a></li>
               <li ng-class="{ active: isActive('/contact/')}"><a ng-href="#/contact/">Contact</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <!-- <ul class="nav navbar-nav navbar-right">
                 <a ng-href="#/login" ng-hide="isAuth()"><button type="button" class="btn btn-default navbar-btn">Log in</button></a>
                 <button type="button" class="btn btn-default navbar-btn" ng-hide="!isAuth()" ng-click="logout()">Log out</button>
                 <a ng-href="#/inscriptions" ng-hide="isAuth()"><button type="button" class="btn btn-default navbar-btn">Sign up</button></a>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </div>
@@ -100,6 +100,10 @@
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+    <script src="bower_components/pdfjs-dist/build/pdf.worker.js"></script>
+    <script src="bower_components/angular-pdf/dist/angular-pdf.js"></script>
+    <script src="bower_components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

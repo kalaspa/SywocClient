@@ -23,7 +23,7 @@ angular.module('sywocClientApp')
     $scope.message = "";
 
     $scope.signIn = function () {
-        LoginAPI.login($scope.loginData).then(function (response) {
+        LoginAPI.login($scope.loginData).then(function () {
             $location.path('/home/');
         },
          function (err) {

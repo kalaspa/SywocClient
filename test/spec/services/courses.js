@@ -12,8 +12,8 @@ describe('CoursesAPI' , function() {
         $httpBackend = _$httpBackend_;
     }));
 
-    it('should implement addBoat' , function(){
+    /*it('should implement addBoat' , function(){
         expect(CoursesAPI.addBoat).toBeDefined();
-    });
+    });*/
 
 });

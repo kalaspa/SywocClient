@@ -6,7 +6,7 @@ angular.module('sywocClientApp')
     .factory('LoginAPI', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
         var serviceBase = 'http://localhost:8000/';
-        var authServiceFactory = {};
+        //var authServiceFactory = {};
 
         var authentication = {
             isAuth: false,
@@ -33,7 +33,7 @@ angular.module('sywocClientApp')
                 deferred.resolve(response);
 
                 localStorageService.set('authorizationData', { token: response.token, username: loginData.username , isAdmin: authentication.isAdmin, hasBoat: authentication.hasBoat});
-            }).error(function (err, status) {
+            }).error(function (err) {
                 logOut();
                 deferred.reject(err);
             });

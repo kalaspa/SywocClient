@@ -21,7 +21,7 @@ angular.module('sywocClientApp')
     ParticipantsAPI.getBoat().then(function(response){
         $scope.boats = [];
         for (var i = 0 ; i < response.length ; i++){
-            if (!response[i].abandon || response[i].abandon == null){
+            if (!response[i].abandon || response[i].abandon === null){
                 $scope.boats.push(response[i]);
             }
         }

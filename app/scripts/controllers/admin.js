@@ -39,7 +39,7 @@ angular.module('sywocClientApp')
     };
 
     $scope.post = function(boat , method){
-        AdminAPI.post(boat , method).then(function(resp){
+        AdminAPI.post(boat , method).then(function(){
             $route.reload();
         });
     };
@@ -49,7 +49,7 @@ angular.module('sywocClientApp')
     };
 
     $scope.updateCrewmate = function(crewmate){
-        MyBoatAPI.updateCrewmate(crewmate).then(function(resp){
+        MyBoatAPI.updateCrewmate(crewmate).then(function(){
             crewmate.fix = !crewmate.fix;
         });
     };

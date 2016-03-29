@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'LocalStorageModule',
     'ui.sortable',
+    'pdf',
   ])
   .config(['$resourceProvider', function($resourceProvider) {
       // Don't strip trailing slashes from calculated URLs
@@ -35,7 +36,7 @@ angular
         controller: 'DocumentsCtrl',
         controllerAs: 'documents'
       })
-      .when('/inscriptions/', {
+      /*.when('/inscriptions/', {
         templateUrl: 'views/inscriptions.html',
         controller: 'InscriptionsCtrl',
         controllerAs: 'inscriptions'
@@ -69,7 +70,7 @@ angular
         templateUrl: 'views/myboat.html',
         controller: 'MyBoatCtrl',
         controllerAs: 'myboat'
-      })
+    })*/
       .when('/photos/', {
         templateUrl: 'views/photos.html',
         controller: 'PhotosCtrl',
@@ -80,11 +81,11 @@ angular
         controller: 'SponsorsCtrl',
         controllerAs: 'sponsors'
       })
-      .when('/us/', {
+      /*.when('/us/', {
         templateUrl: 'views/us.html',
         controller: 'UsCtrl',
         controllerAs: 'us'
-      })
+    })*/
       .when('/contact/', {
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl',

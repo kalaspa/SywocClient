@@ -33,7 +33,7 @@ angular.module('sywocClientApp')
     };
 
     $scope.updateCrewmate = function(crewmate){
-        MyBoatAPI.updateCrewmate(crewmate).then(function(resp){
+        MyBoatAPI.updateCrewmate(crewmate).then(function(){
             crewmate.fix = !crewmate.fix;
         });
     };
